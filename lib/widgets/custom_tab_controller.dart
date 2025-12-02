@@ -47,8 +47,8 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
     required IconData icon,
   }) {
     return Container(
-      height: 45,
-      width: 45,
+      height: 55,
+      width: 55,
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -57,7 +57,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
       child: Tab(
         icon: Icon(
           icon,
-          size: 35,
+          size: 45,
           color: widget.tabController.index == index
               ? Colors.white
               : activeColor,

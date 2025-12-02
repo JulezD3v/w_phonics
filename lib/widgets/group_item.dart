@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:w_phonics/models/phonics_character.dart';
 import 'package:w_phonics/models/phonics_group.dart';
+import 'package:w_phonics/pages/lesson_item_page.dart';
 
 class GroupItem extends StatefulWidget {
-  const GroupItem({super.key, required this.phonicsGroup,});
+  const GroupItem({super.key, required this.phonicsGroup});
   final PhonicsGroup phonicsGroup;
 
   @override
@@ -11,7 +12,6 @@ class GroupItem extends StatefulWidget {
 }
 
 class _GroupItemState extends State<GroupItem> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +35,9 @@ class _GroupItemState extends State<GroupItem> {
                 backgroundColor: widget.phonicsGroup.color,
                 foregroundColor: Colors.white,
               ),
-              child: Text("Practice Group ${widget.phonicsGroup.id} with readers"),
+              child: Text(
+                "Practice Group ${widget.phonicsGroup.id} with readers",
+              ),
             ),
           ),
         ],
@@ -60,18 +62,31 @@ class _GroupItemState extends State<GroupItem> {
         ),
 
         itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Center(
-              child: Text(
-                listOfCharacters[index].character,
-                style: TextStyle(
-                  fontSize: 32,
+          var phonicCharacter = listOfCharacters[index];
+          
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LessonItemPage(
                   color: widget.phonicsGroup.color,
-                  fontWeight: FontWeight.bold,
+                  phonicsCharacter: phonicCharacter ,
+                )),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Center(
+                child: Text(
+                  phonicCharacter.character,
+                  style: TextStyle(
+                    fontSize: 32,
+                    color: widget.phonicsGroup.color,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
