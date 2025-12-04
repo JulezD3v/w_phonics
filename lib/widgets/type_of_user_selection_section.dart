@@ -27,6 +27,7 @@ class _TypeOfUserSelectionSectionState
 
     return Column(
       spacing: 16,
+      
       children: [
         Text(
           widget.heading,
