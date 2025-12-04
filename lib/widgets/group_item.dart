@@ -14,7 +14,7 @@ class GroupItem extends StatefulWidget {
 class _GroupItemState extends State<GroupItem> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 400,
       child: Stack(
         children: [

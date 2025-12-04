@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:w_phonics/pages/home_page.dart';
-import 'package:w_phonics/widgets/custom_textfield.dart';
-import 'package:w_phonics/widgets/password_textfield.dart';
 import 'package:w_phonics/widgets/signup_section.dart';
 import 'package:w_phonics/widgets/type_of_user_selection_section.dart';
 
