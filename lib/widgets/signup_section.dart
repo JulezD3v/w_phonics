@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w_phonics/widgets/custom_textfield.dart';
 import 'package:w_phonics/widgets/password_textfield.dart';
+import 'package:w_phonics/pages/signup_page.dart';
 
 class SignupSection extends StatelessWidget {
   const SignupSection({

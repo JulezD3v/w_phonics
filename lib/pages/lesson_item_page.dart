@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
+//import 'package:just_audio/just_audio.dart';
 import 'package:w_phonics/models/phonics_character.dart';
 import 'package:w_phonics/pages/flashcard_page.dart';
 import 'package:w_phonics/pages/formation_page.dart';
@@ -41,7 +41,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
           if (phonicsCharacter.revision.isNotEmpty)
             PhonicsItemPageCard(
               title: "Revision",
-              child: Container(
+              child: SizedBox(
                 height: 200,
                 child: GridView.count(
                   crossAxisCount: 3,
@@ -174,7 +174,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
                 Text(
                   "Call out the sounds below, and ask the children to write them down",
                 ),
-                Container(
+                SizedBox(
                   height: 200,
                   child: GridView.count(
                     crossAxisCount: 3,

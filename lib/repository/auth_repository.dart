@@ -35,7 +35,8 @@ class AuthRepository {
         uid: response.user!.id, 
         email: email,
       );
-
+// The user is authenticated here, but has no profile record yet!
+// This line tries to create that profile record.
       // save the user record to supabase
       await supabase.from('users').insert(user.toJson());
 
