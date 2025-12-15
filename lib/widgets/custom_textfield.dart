@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
 
     decoration: InputDecoration(
     hintText: 'Student name',
-    hintStyle: TextStyle(color: Colors.white70),
+    hintStyle: TextStyle(color: const Color.fromARGB(179, 93, 96, 105)),
   
         suffixIcon: suffixIcon,
         enabledBorder: OutlineInputBorder(
