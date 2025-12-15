@@ -18,11 +18,14 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
-      obscureText: obscureText,
-      keyboardType: textInputType,
+  controller: controller,
+  style: const TextStyle(color: Colors.white),
+  
 
-      decoration: InputDecoration(
+    decoration: InputDecoration(
+    hintText: 'Student name',
+    hintStyle: TextStyle(color: Colors.white70),
+  
         suffixIcon: suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -38,8 +41,10 @@ class CustomTextField extends StatelessWidget {
         focusColor: Colors.white,
         
       ),
+
       cursorColor: Colors.white,
       
     );
   }
 }
+

@@ -1,68 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:w_phonics/data/demo_studentcard.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class StudentsPage extends StatefulWidget {
+  const StudentsPage({super.key});
 
-    @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true, 
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          'Pupils',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 22,
-            fontWeight: FontWeight.w500,
-          ),
+  @override
+  State<StudentsPage> createState() => _StudentsPageState();
+}
+
+class _StudentsPageState extends State<StudentsPage> {
+  final List<String> students = [];
+
+  void _addStudent(String name) {
+    setState(() {
+      students.add(name);
+    });
+  }
+
+  void _removeStudent(int index) {
+    setState(() {
+      students.removeAt(index);
+    });
+  }
+
+  void _showAddStudentDialog() {
+    final controller = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Add student'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(hintText: 'Student name'),
         ),
         actions: [
-          _buildTopButton(icon: Icons.info_outline, color: Colors.purpleAccent),
-          const SizedBox(width: 8),
-          _buildTopButton(icon: Icons.add, color: Colors.purpleAccent),
-          const SizedBox(width: 16),
-        ],
-      ),
-      body: const Center(
-        child: Text(
-          'There are no pupils yet.',
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
           ),
-        ),
+          ElevatedButton(
+            onPressed: () {
+              if (controller.text.trim().isNotEmpty) {
+                _addStudent(controller.text.trim());
+              }
+              Navigator.pop(context);
+            },
+            child: const Text('Add'),
+          ),
+        ],
       ),
     );
   }
- 
-  // Helper widget for the top right buttons
-  Widget _buildTopButton({required IconData icon, required Color color}) {
-    return Container(
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            // ignore: deprecated_member_use
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 2),
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pupils'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _showAddStudentDialog,
           ),
         ],
       ),
-      child: Icon(
-        icon,
-        color: color,
-        size: 24,
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: GridView.builder(
+          itemCount: students.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            childAspectRatio: 1,
+          ),
+          itemBuilder: (context, index) {
+            final name = students[index];
+
+            return GestureDetector(
+              onLongPress: () => _removeStudent(index),
+              
+              child: StudentCard(name: name),
+            );
+          },
+        ),
       ),
     );
   }
 }
- 
