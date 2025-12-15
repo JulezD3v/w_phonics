@@ -38,8 +38,8 @@ final _dummyWritingItems = [
   WritingItem(character: "dad", sound: "assets/audio/writing/dad.mp3", type: WritingType.word),
 ];
 
-// Dummy PhonicsCharacters
-final List<PhonicsCharacter> _phonicsCharacters = [
+// Dummy PhonicsCharacters phonicsCharacters.wher
+final List<PhonicsCharacter> phonicsCharacters = [
   PhonicsCharacter(
     character: "s",
     story: "A snake slithers making a soft /s/ sound.",
@@ -61,6 +61,7 @@ final List<PhonicsCharacter> _phonicsCharacters = [
     listOfWriting: [_dummyWritingItems[0], _dummyWritingItems[1]],
     songText: "A, A, Apple!",
     songAudio: "assets/audio/a_song.mp3",
+    revision: ["s"]
   ),
   PhonicsCharacter(
     character: "t",
@@ -179,14 +180,14 @@ final List<PhonicsCharacter> _phonicsCharacters = [
 final List<PhonicsGroup> PHONICS_GROUP = [
   PhonicsGroup(
     id: "1",
-    characters: _phonicsCharacters.where((c) => ["s", "a", "t", "i", "p", "n"].contains(c.character)).toList(),
+    characters: phonicsCharacters.where((c) => ["s", "a", "t", "i", "p", "n"].contains(c.character)).toList(),
     practiceLink: "https://example.com/practice/group1",
     bgImage: "assets/groups/group1_bg.png",
     color: Colors.orangeAccent,
   ),
   PhonicsGroup(
     id: "2",
-    characters: _phonicsCharacters.where((c) => ["ck", "e", "h", "r", "m", "d"].contains(c.character)).toList(),
+    characters: phonicsCharacters.where((c) => ["ck", "e", "h", "r", "m", "d"].contains(c.character)).toList(),
     practiceLink: "https://example.com/practice/group2",
     bgImage: "assets/groups/group2_bg.png",
     color: Colors.green,

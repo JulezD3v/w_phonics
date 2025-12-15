@@ -3,7 +3,13 @@ import 'package:w_phonics/widgets/custom_textfield.dart';
 import 'package:w_phonics/widgets/password_textfield.dart';
 
 class SignupSection extends StatelessWidget {
-  const SignupSection({super.key});
+  const SignupSection({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+  });
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +17,10 @@ class SignupSection extends StatelessWidget {
       children: [
         Text(
           "Welcome to W phonics!",
-          style: Theme.of(
-            context,
-          ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold, color: Colors.white,),
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
           textAlign: TextAlign.center,
         ),
         Padding(
@@ -21,8 +28,8 @@ class SignupSection extends StatelessWidget {
           child: Column(
             spacing: 16,
             children: [
-              CustomTextField(label: "Email"),
-              PassswordTextfield(),
+              CustomTextField(label: "Email", controller: emailController),
+              PassswordTextfield(controller: passwordController),
             ],
           ),
         ),
@@ -31,7 +38,6 @@ class SignupSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: AgreementWIdget(),
         ),
-
       ],
     );
   }
@@ -51,7 +57,7 @@ class AgreementWIdget extends StatelessWidget {
               onChanged: (value) {},
               side: BorderSide(color: Colors.white),
             ),
-            Text("SELECT ALL", style: TextStyle( color: Colors.white,),),
+            Text("SELECT ALL", style: TextStyle(color: Colors.white)),
           ],
         ),
         Padding(
@@ -60,9 +66,16 @@ class AgreementWIdget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Checkbox(value: false,side: BorderSide(color: Colors.white), onChanged: (value) {}),
+                  Checkbox(
+                    value: false,
+                    side: BorderSide(color: Colors.white),
+                    onChanged: (value) {},
+                  ),
                   Expanded(
-                    child: Text("* I agree to the privacy policy and terms", style: TextStyle( color: Colors.white,),),
+                    child: Text(
+                      "* I agree to the privacy policy and terms",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
@@ -76,9 +89,7 @@ class AgreementWIdget extends StatelessWidget {
                   Expanded(
                     child: Text(
                       "I want to receive email update from Jolly Learning",
-                      style: TextStyle(
-                         color: Colors.white,
-                      ),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ],
